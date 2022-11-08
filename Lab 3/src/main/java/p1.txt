@@ -1,0 +1,15 @@
+int 1nr, nr2, nr3, nrMax;
+read(nr1);
+read(nr2);
+read(nr3);
+if(nr1 > nr2 && nr1 > nr3){
+	nrMax = nr1:
+}
+else{
+	if(nr2 > nr3){
+		nrMax = nr2;
+	}
+	else{
+		nrMax = nr3;
+	}
+}
