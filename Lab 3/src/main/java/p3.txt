@@ -1,0 +1,11 @@
+int n, nr, sum=0;
+print("Nr of numbers to sum: ");
+read(n);
+
+for(int i=0;i<n;i++){
+	read(nr);
+	sum=sum+nr;
+}
+
+print("The sum of the numbers is");
+print(sum);

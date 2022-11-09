@@ -1,0 +1,30 @@
+int nr;
+read(nr);
+if(nr <= 1){
+	print("Not prime");
+}
+else{
+	if(nr == 2 || nr == 3){
+		print("It is prime");
+	}
+	else{
+		if(nr%2 == 0 || nr%3 == 0){
+			print("Not prime");
+		}
+		else{
+			int ok=1;
+			for(int i=5; i<=nr/2; i=i+6){
+				if(nr%i!=0 || nr%(i+2)!=0){
+					ok=0;
+					break;
+				}
+			}
+			if(ok==1){
+				print("It is prime");
+			}
+			else{
+				print("Not prime");
+			}
+		}
+	}
+}
