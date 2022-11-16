@@ -14,8 +14,9 @@ public class SymbolTableFileWriter {
             writer.write(String.format(" | Value                | Pos       |\n"));
             writer.write(String.format(" ------------------------------------\n"));
             for (HashNode<String, Integer> p : identifiersTable.getHashNodes()) {
-                if (p != null) {
+                while (p != null) {
                     writer.write(String.format(" | %-20s | %9d |\n", p.getKey(), p.getValue()));
+                    p = p.getNextNode();
                 }
             }
             writer.write(String.format(" ------------------------------------\n"));
@@ -26,8 +27,9 @@ public class SymbolTableFileWriter {
             writer.write(String.format(" | Value                            | Pos       |\n"));
             writer.write(String.format(" ------------------------------------------------\n"));
             for (HashNode<String, Integer> p : constantsTable.getHashNodes()) {
-                if (p != null) {
+                while (p != null) {
                     writer.write(String.format(" | %-32s | %9d |\n", p.getKey(), p.getValue()));
+                    p = p.getNextNode();
                 }
             }
             writer.write(String.format(" ------------------------------------------------\n"));

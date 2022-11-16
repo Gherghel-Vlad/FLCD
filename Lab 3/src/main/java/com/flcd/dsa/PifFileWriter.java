@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class PifFileWriter {
-
     public static void writePifToFile(List<Pair> pifTable, final String fileName){
         try(FileWriter writer = new FileWriter(fileName)) {
             writer.write(String.format(" ------------------------------------\n"));

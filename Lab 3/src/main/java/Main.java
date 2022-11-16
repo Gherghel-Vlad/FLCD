@@ -12,5 +12,8 @@ public class Main {
 
         PifFileWriter.writePifToFile(pifTable, "PIF.out");
         SymbolTableFileWriter.writeSymbolTableToFile("ST.out", identifiersTable, constantsTable);
+
+        MenuFA mfa = new MenuFA();
+        mfa.start();
     }
 }

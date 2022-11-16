@@ -1,3 +1,4 @@
+import com.flcd.dsa.FA;
 import com.flcd.dsa.HashNode;
 import com.flcd.dsa.HashTable;
 import com.flcd.dsa.Pair;
@@ -96,17 +97,27 @@ public class Scanner {
     private static boolean isConstant(String token) {
         boolean isConst = false;
         int i;
+        FA fa = new FA("src/integerConstantsFA.txt");
 
         if (token.length() > 0 && token.charAt(0) == '"' && token.charAt(token.length() - 1) == '"') {
             isConst = true;
         } else {
-            for (i = 0; i < token.length(); i++) {
-                if (!Character.isDigit(token.charAt(i))) {
-                    break;
-                }
-            }
+//            int startIndex = 0;
+//            if(token.charAt(0) == '-' || token.charAt(0) == '+'){
+//                startIndex = 1;
+//            }
 
-            if (i >= token.length()) {
+//            for (i = startIndex; i < token.length(); i++) {
+//                if (!Character.isDigit(token.charAt(i))) {
+//                    break;
+//                }
+//            }
+//
+//            if (i >= token.length()) {
+//                isConst = true;
+//            }
+
+            if (fa.verify(token.strip())) {
                 isConst = true;
             }
         }
@@ -117,16 +128,21 @@ public class Scanner {
     private static boolean isIdentifier(String token) {
         boolean isIden = false;
         int i;
+        FA fa = new FA("src/identifiersFA.txt");
 
-        if (token.length() > 0 && Character.isLetter(token.charAt(0))) {
-            for (i = 0; i < token.length(); i++) {
-                if (!Character.isLetterOrDigit(token.charAt(i))) {
-                    break;
-                }
-            }
-            if (i >= token.length()) {
-                isIden = true;
-            }
+//        if (token.length() > 0 && Character.isLetter(token.charAt(0))) {
+//            for (i = 0; i < token.length(); i++) {
+//                if (!Character.isLetterOrDigit(token.charAt(i))) {
+//                    break;
+//                }
+//            }
+//            if (i >= token.length()) {
+//                isIden = true;
+//            }
+//        }
+
+        if(fa.verify(token)){
+            isIden = true;
         }
 
         return isIden;
@@ -142,10 +158,16 @@ public class Scanner {
         String token;
         List<String> tokensDetected = new ArrayList<>();
         while (startIndex < line.length()) {
-            if (Character.isLetterOrDigit(line.charAt(finalIndex)) || line.charAt(startIndex) == '"') {
+            if (Character.isLetterOrDigit(line.charAt(finalIndex)) || line.charAt(startIndex) == '"' || line.charAt(startIndex) == '-' || line.charAt(startIndex) == '+') {
+                if(line.charAt(startIndex) == '-' || line.charAt(startIndex) == '+'){
+                    finalIndex++;
+                }
+
                 while (finalIndex < line.length() && Character.isLetterOrDigit(line.charAt(finalIndex))) {
                     finalIndex++;
                 }
+
+
 
                 if(line.charAt(startIndex) == '"'){
                     finalIndex++;
