@@ -1,0 +1,19 @@
+a = 0;
+b = 0;
+
+input(a);
+input(b);
+
+gcd = 0;
+
+if (a > b) {
+	a <=> b;
+}
+
+for (d in [1...a]) {
+	if (a % d == 0 and b % d == 0) {
+		gcd = d;
+	}
+}
+
+print(gcd);
